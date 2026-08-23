@@ -1,14 +1,11 @@
-"""Representation comparison (Laasya's former task, now yours): does the
-pretrained Enformer representation carry more condition-relevant signal
+"""Representation comparison: does the pretrained Enformer representation carry more condition-relevant signal
 than the simple learned embedding your baseline already uses?
 
 Design choice: rather than retraining the full generative model twice
 (slow, confounds representation quality with generation-specific training
 noise), this trains a small linear/MLP PROBE on top of each frozen
 representation to predict the condition label, then compares probe
-validation accuracy. This is standard practice for comparing
-representation quality (see e.g. linear-probing literature) and is much
-cheaper to run and interpret than a full retrain-and-compare.
+validation accuracy. 
 
 Entrypoint (once Enformer is actually runnable on lab hardware):
     python src/compare_representations.py --config configs/baseline.yaml
