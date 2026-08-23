@@ -1,0 +1,44 @@
+{
+  "run_id": 1787507815,
+  "config_path": "configs/v1.yaml",
+  "config": {
+    "seed": 42,
+    "data": {
+      "train_csv": "data/v1/train.csv",
+      "val_csv": "data/v1/val.csv",
+      "test_csv": "data/v1/test.csv",
+      "seq_col": "sequence",
+      "label_col": "condition",
+      "min_len": 1200,
+      "max_len": 1200,
+      "pad_to": 1200
+    },
+    "model": {
+      "type": "markov",
+      "order": 3,
+      "embedding_dim": 32,
+      "hidden_dim": 128,
+      "num_layers": 1,
+      "dropout": 0.1
+    },
+    "train": {
+      "batch_size": 32,
+      "epochs": 20,
+      "lr": 0.001,
+      "weight_decay": 0.0,
+      "checkpoint_dir": "checkpoints",
+      "log_every": 20,
+      "early_stop_patience": 5,
+      "use_class_balancing": true
+    },
+    "generate": {
+      "num_samples_per_condition": 50,
+      "output_dir": "outputs",
+      "temperature": 1.0
+    }
+  },
+  "checkpoint_path": "checkpoints/model_v1_1787507815.pkl",
+  "n_generated": 200,
+  "n_qc_passed": 200,
+  "results_path": "outputs/model_v1_results_1787507815.jsonl"
+}

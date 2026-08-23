@@ -1,0 +1,34 @@
+seed: 42
+
+data:
+  csv_path: "data/sequences.csv"
+  seq_col: "sequence"
+  label_col: "condition"
+  min_len: 200
+  max_len: 500
+  pad_to: 500
+  train_frac: 0.8
+  val_frac: 0.1
+  test_frac: 0.1
+
+model:
+  type: "lstm"
+  order: 3
+  embedding_dim: 32
+  hidden_dim: 128
+  num_layers: 1
+  dropout: 0.1
+
+train:
+  batch_size: 64
+  epochs: 20
+  lr: 0.001
+  weight_decay: 0.0
+  checkpoint_dir: "checkpoints"
+  log_every: 20
+  early_stop_patience: 5
+
+generate:
+  num_samples_per_condition: 50
+  output_dir: "outputs"
+  temperature: 1.0

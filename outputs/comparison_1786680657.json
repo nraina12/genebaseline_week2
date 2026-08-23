@@ -1,0 +1,93 @@
+{
+  "GATA6": {
+    "generated": {
+      "n_sequences": 0
+    },
+    "real": {
+      "n_sequences": 1,
+      "mean_motif_frequency_per_100bp": 0.666,
+      "mean_motif_strength": 0.814,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": null,
+      "near_duplicates": 0
+    }
+  },
+  "HNF4G_FOXA1": {
+    "generated": {
+      "n_sequences": 0
+    },
+    "real": {
+      "n_sequences": 2,
+      "mean_motif_frequency_per_100bp": 6.37,
+      "mean_motif_strength": 0.787,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": 0.229,
+      "near_duplicates": 0
+    }
+  },
+  "KRAS_MAPK_ERK": {
+    "generated": {
+      "n_sequences": 0
+    },
+    "real": {
+      "n_sequences": 2,
+      "mean_motif_frequency_per_100bp": 2.623,
+      "mean_motif_strength": 0.79,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": 0.247,
+      "near_duplicates": 0
+    }
+  },
+  "PTF1A_NEGATIVE": {
+    "generated": {
+      "n_sequences": 0
+    },
+    "real": {
+      "n_sequences": 2,
+      "mean_motif_frequency_per_100bp": 1.79,
+      "mean_motif_strength": 0.812,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": 0.241,
+      "near_duplicates": 0
+    }
+  },
+  "control": {
+    "generated": {
+      "n_sequences": 50,
+      "mean_motif_frequency_per_100bp": 9.988,
+      "mean_motif_strength": 0.791,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": 0.251,
+      "near_duplicates": 0
+    },
+    "real": {
+      "n_sequences": 0
+    }
+  },
+  "signal_high": {
+    "generated": {
+      "n_sequences": 50,
+      "mean_motif_frequency_per_100bp": 7.636,
+      "mean_motif_strength": 0.788,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": 0.345,
+      "near_duplicates": 0
+    },
+    "real": {
+      "n_sequences": 0
+    }
+  },
+  "signal_low": {
+    "generated": {
+      "n_sequences": 50,
+      "mean_motif_frequency_per_100bp": 11.992,
+      "mean_motif_strength": 0.791,
+      "percent_unique": 100.0,
+      "pairwise_similarity_mean": 0.34,
+      "near_duplicates": 0
+    },
+    "real": {
+      "n_sequences": 0
+    }
+  }
+}

@@ -1,0 +1,35 @@
+seed: 42
+
+data:
+  # pre-split, gene-locked files from Tisha (do NOT re-split these)
+  train_csv: "data/v1/train.csv"
+  val_csv: "data/v1/val.csv"    
+  test_csv: "data/v1/test.csv"  
+  seq_col: "sequence"
+  label_col: "condition"
+  min_len: 1200
+  max_len: 1200
+  pad_to: 1200
+
+model:
+  type: "markov"
+  order: 3
+  embedding_dim: 32
+  hidden_dim: 128
+  num_layers: 1
+  dropout: 0.1
+
+train:
+  batch_size: 32
+  epochs: 20
+  lr: 0.001
+  weight_decay: 0.0
+  checkpoint_dir: "checkpoints"
+  log_every: 20
+  early_stop_patience: 5
+  use_class_balancing: true    # oversamples minority conditions (KRAS_MAPK_ERK is 62.5% of V1)
+
+generate:
+  num_samples_per_condition: 50
+  output_dir: "outputs"
+  temperature: 1.0
