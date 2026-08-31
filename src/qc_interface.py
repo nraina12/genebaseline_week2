@@ -1,38 +1,31 @@
-"""Placeholder for Sanjeet's QC module. Everything downstream (pipeline.py)
-calls run_qc() through this interface, so once his real spec/code arrives,
-only this file needs to change -- nothing else in the pipeline does.
+from typing import List, Optional
 
-Current behavior is a stand-in: basic sanity checks only (valid bases,
-correct length, non-empty). Replace the body of run_qc() with a call into
-Sanjeet's actual module once he responds.
-"""
-
-from dataclasses import dataclass, field
-from typing import List
+from sanjeet_qc import run_qc as _sanjeet_run_qc
+from sanjeet_qc import SequenceRecord, QCConfig
+from sanjeet_qc.motifs import load_motifs
 
 
-@dataclass
-class QCResult:
-    sequence_id: int
-    passed: bool
-    flags: List[str] = field(default_factory=list)
-    scores: dict = field(default_factory=dict)
+def run_qc_batch(records: List[dict], min_len: int, max_len: int,
+                  motifs_path: str = "data/motifs_sanjeet.json",
+                  training_sequences: Optional[List[str]] = None) -> tuple:
+    """records: list of dicts with at least 'sequence' and 'condition' keys
+    (the format generate.py / pipeline.py already produce). Returns
+    (results, summary) from Sanjeet's run_qc -- CandidateResult objects,
+    one per input record, in order, plus his summary dict.
+    """
+    motifs = load_motifs(motifs_path)
+    config = QCConfig(min_length=min_len, max_length=max_len)
 
+    candidates = [
+        SequenceRecord(id=str(i), sequence=rec["sequence"],
+                        metadata={"condition": rec.get("condition")})
+        for i, rec in enumerate(records)
+    ]
+    training_records = [
+        SequenceRecord(id=f"train_{i}", sequence=seq, metadata={})
+        for i, seq in enumerate(training_sequences or [])
+    ]
 
-def run_qc(sequence: str, condition: str, metadata: dict, min_len: int = 200, max_len: int = 500) -> QCResult:
-    """PLACEHOLDER -- replace with Sanjeet's actual QC call. min_len/max_len should be passed from
-    the run's config (data.min_len / data.max_len) so this always matches
-    whichever dataset is actually being used."""
-    flags = []
-    valid_bases = set("ACGT")
-    if not sequence or not set(sequence.upper()).issubset(valid_bases):
-        flags.append("invalid_bases")
-    if not (min_len <= len(sequence) <= max_len):
-        flags.append(f"length_out_of_range (got {len(sequence)}, expected [{min_len},{max_len}])")
-
-    return QCResult(
-        sequence_id=metadata.get("id", -1),
-        passed=(len(flags) == 0),
-        flags=flags,
-        scores={},
-    )
+    results, summary = _sanjeet_run_qc(candidates, motifs=motifs,
+                                        training_records=training_records, config=config)
+    return results, summary

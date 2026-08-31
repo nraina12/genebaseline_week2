@@ -22,3 +22,10 @@ Week 2:
     python3 src/candidate_score.py --input outputs/generated_XXXX.jsonl --pwms data/jaspar_pwms.txt --reference data/real_sequences.csv --thresholds data/motif_thresholds.json
 
 #for next week: fix debugging, compare enformer vs. simple rep, fix class imbalance, 
+
+Week 3:
+Worked on checkpoint loading mismatch (Markov vs. LSTM), QC length-check hardcoded to old spec, motif-matching threshold bug for HNF4G.
+    Entrypoint:
+    python3 src/pipeline.py --config configs/v1.yaml
+
+    Reproducible Manifest: outputs/model_v1_manifest_1788143951.json
