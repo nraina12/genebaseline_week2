@@ -16,11 +16,11 @@ GPU to run in reasonable time. Treat get_enformer_embedding() as a
 correctly-structured but UNTESTED stub; validate it on lab hardware before
 trusting its output.
 
-Known integration wrinkle worth flagging to the team: Enformer's receptive
-field (196,608bp) is vastly larger than your 200-500bp regulatory
-sequences. Two common ways to handle this mismatch:
+Known integration wrinkle: Enformer's receptive
+field (196,608bp) is vastly larger than our 1200 bp regulatory
+sequences. I can potentially:
   (a) Pad each sequence with real flanking genomic sequence (if Tisha's
-      coordinates let you pull the actual up/downstream context) -- more
+      coordinates let me pull the actual up/downstream context) -- more
       biologically valid, more data-engineering work.
   (b) Pad with N / random sequence on either side -- fast, no extra data
       needed, but the embedding at the region of interest may be affected

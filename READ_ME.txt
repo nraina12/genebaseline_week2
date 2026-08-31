@@ -18,8 +18,6 @@ Week 2:
 
     Entrypoint:
     python src/pipeline.py --config configs/baseline.yaml
-    python3 src/calibrate_motif_thresholds.py --pwms data/jaspar_pwms.txt --reference data/real_sequences.csv --auto-correct-length 1201 --output data/motif_thresholds.json
-    python3 src/candidate_score.py --input outputs/generated_XXXX.jsonl --pwms data/jaspar_pwms.txt --reference data/real_sequences.csv --thresholds data/motif_thresholds.json
 
 #for next week: fix debugging, compare enformer vs. simple rep, fix class imbalance, 
 
